@@ -1,0 +1,2 @@
+SALDO - dodano kwote 200
+ZAKUP : zakupiono olej, ilosc sztuk: 1 w cenie 20
