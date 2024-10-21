@@ -1,0 +1,26 @@
+[
+    {
+        "item": "gitara",
+        "value1": 3,
+        "value2": 7,
+        "value3": 0
+    },
+    {
+        "item": "kanapka",
+        "value1": 12,
+        "value2": 5,
+        "value3": "kubek"
+    },
+    {
+        "item": "pedzel",
+        "value1": 17,
+        "value2": 34,
+        "value3": 5
+    },
+    {
+        "item": "plakat",
+        "value1": "czerwony",
+        "value2": 8,
+        "value3": 0
+    }
+]
