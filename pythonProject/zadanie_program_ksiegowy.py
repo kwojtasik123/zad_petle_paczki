@@ -1,5 +1,5 @@
 #opis komend:
-#saldo - Program pobiera kwotę do dodania lub odjęcia z konta
+#saldo.txt - Program pobiera kwotę do dodania lub odjęcia z konta
 #sprzedaż - Program pobiera nazwę produktu, cenę oraz liczbę sztuk.
 # Produkt musi znajdować się w magazynie. Obliczenia respektuje względem konta i magazynu
 # (np. produkt "rower" o cenie 100 i jednej sztuce spowoduje odjęcie z magazynu produktu
@@ -8,7 +8,7 @@
 # Obliczenia są wykonane odwrotnie do komendy "sprzedaz". Saldo konta po zakończeniu operacji „zakup” nie może być ujemne.
 #konto - Program wyświetla stan konta.
 #lista - Program wyświetla całkowity stan magazynu wraz z cenami produktów i ich ilością.
-#magazyn - Program wyświetla stan magazynu dla konkretnego produktu. Należy podać jego nazwę.
+#magazyn.txt - Program wyświetla stan magazynu dla konkretnego produktu. Należy podać jego nazwę.
 #przegląd - Program pobiera dwie zmienne „od” i „do”, na ich podstawie wyświetla wszystkie wprowadzone akcje zapisane
 # pod indeksami od „od” do „do”. Jeżeli użytkownik podał pustą wartość „od” lub „do”, program powinien wypisać przegląd
 # od początku lub/i do końca. Jeżeli użytkownik podał zmienne spoza zakresu, program powinien o tym poinformować
@@ -16,8 +16,8 @@
 #koniec - Aplikacja kończy działanie
 #DODATKOWE WYMAGANIA:
 #Aplikacja od uruchomienia działa tak długo, aż podamy komendę "koniec".
-#Komendy saldo, sprzedaż i zakup są zapamiętywane przez program, aby móc użyć komendy "przeglad".
-#Po wykonaniu dowolnej komendy (np. "saldo") aplikacja ponownie wyświetla informację o dostępnych komendach,
+#Komendy saldo.txt, sprzedaż i zakup są zapamiętywane przez program, aby móc użyć komendy "przeglad".
+#Po wykonaniu dowolnej komendy (np. "saldo.txt") aplikacja ponownie wyświetla informację o dostępnych komendach,
 # a także prosi o wprowadzenie jednej z nich.
 #Zadbaj o błędy, które mogą się pojawić w trakcie wykonywania operacji (np. przy komendzie "zakup" jeśli dla produktu
 # podamy ujemną kwotę, aplikacja powinna wyświetlić informację o niemożności wykonania operacji i jej nie wykonać).
@@ -79,7 +79,7 @@ while True:
             print("Niewystarczające środki na koncie.")
 
     elif komenda == "KONTO":
-        print(f"Aktualne saldo wynosi: {konto}")
+        print(f"Aktualne saldo.txt wynosi: {konto}")
 
     elif komenda == "LISTA":
         if stan_magazynu:
@@ -87,7 +87,7 @@ while True:
             for (produkt, info) in stan_magazynu.items():
                 print(f" -{produkt} : liczba: {info['liczba']} sztuk, cena: {info['cena']} ")
         else:
-            print("magazyn jest pusty")
+            print("magazyn.txt jest pusty")
     elif komenda == "MAGAZYN":
         produkt = input("Podaj nazwę produktu: ")
         if produkt in stan_magazynu:
