@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ZAKUP</title>
+        <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster&display=swap">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <header class="navbar">
+                <section class="navbar-section">
+                    <a href="index.html" class="btn btn-link">Strona główna</a>
+                    <a href="zakup.html" class="btn btn-link">Zakup</a>
+                    <a href="sprzedaz.html" class="btn btn-link">Sprzedaż</a>
+                    <a href="saldo.html" class="btn btn-link">Saldo</a>
+                </section>
+                <section class="navbar-center">
+                    <h1>Program księgowy</h1>
+                </section>
+                <section class="navbar-section">
+                    <a href="Historia_operacji.html" class="btn btn-link">Historia operacji</a>
+                </section>
+            </header>
+
+            <main class="content">
+                <form action="#" method="GET">
+                    <div class="form-group">
+                        <label for="title">nazwa produktu:</label>
+                        <input type="text" id="title" class="form-input" placeholder="Wpisz nazwę produktu" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="author">Cena:</label>
+                        <input type="text" id="author" class="form-input" placeholder="Wpisz cenę" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="count">Liczba sztuk:</label>
+                        <input type="number" id="count" class="form-input" placeholder="Wpisz liczbę sztuk" min="1" max="100" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Potwierdź zakup</button>
+                </form>
+            </main>
+    </div>
 </body>
 </html>
+
