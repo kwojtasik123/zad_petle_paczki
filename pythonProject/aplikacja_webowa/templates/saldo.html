@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Zmień saldo</h2>
+<form action="{{ url_for('zmiana_salda') }}" method="POST">
+    <div class="form-group">
+        <label for="zmiana">Kwota zmiany salda (PLN):</label>
+        <input type="number" id="zmiana" name="zmiana" class="form-input" placeholder="Wpisz kwotę (może być ujemna)" step="0.01" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Zmień saldo</button>
+</form>
+
+<h3>Obecne saldo</h3>
+<p class="lead">Twoje saldo wynosi: <strong>{{ saldo }} PLN</strong></p>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<div class="toast-container">
+    {% for category, message in messages %}
+    <div class="toast {{ 'toast-success' if category == 'success' else 'toast-error' }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+{% endblock %}
