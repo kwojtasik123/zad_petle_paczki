@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Zarejestruj zakup</h2>
+<form action="{{ url_for('zakup') }}" method="POST">
+    <div class="form-group">
+        <label for="nazwa_produktu">Nazwa produktu:</label>
+        <input type="text" id="nazwa_produktu" name="nazwa" class="form-input" placeholder="Wpisz nazwę produktu" required>
+    </div>
+    <div class="form-group">
+        <label for="cena">Cena za sztukę (PLN):</label>
+        <input type="number" id="cena" name="cena" class="form-input" placeholder="Wpisz cenę" step="0.01" min="0.01" required>
+    </div>
+    <div class="form-group">
+        <label for="ilosc">Liczba sztuk:</label>
+        <input type="number" id="ilosc" name="ilosc" class="form-input" placeholder="Wpisz liczbę sztuk" min="1" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Potwierdź zakup</button>
+</form>
+
+<!-- Wyświetlanie wiadomości -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<div class="toast-container">
+    {% for category, message in messages %}
+    <div class="toast {{ 'toast-success' if category == 'success' else 'toast-error' }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+{% endblock %}
+
+
+
