@@ -1,2 +1,4 @@
 SALDO - dodano kwote 200
 ZAKUP : zakupiono olej, ilosc sztuk: 1 w cenie 20
+Zakup: maslo, 1 szt. po 20.0 PLN
+Sprzedaż: maslo, 1 szt. po 30.0 PLN
