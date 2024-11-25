@@ -1,0 +1,19 @@
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Operacja</th>
+            <th>Czas</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in history %}
+        <tr>
+            <td>{{ entry.id }}</td>
+            <td>{{ entry.operacja }}</td>
+            <td>{{ entry.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    <a href="/">Powrót do menu głównego</a>
+    </tbody>
+</table>
