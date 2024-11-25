@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Witaj w programie księgowym</h2>
+<p>Wybierz odpowiednią opcję z menu.</p>
+
+<div class="card">
+    <div class="card-header">
+        <h4>Podsumowanie</h4>
+    </div>
+    <div class="card-body">
+        <p><strong>Saldo:</strong> {{ saldo }} PLN</p>
+        <p><strong>Liczba produktów w magazynie:</strong> {{ magazyn|length }}</p>
+    </div>
+</div>
+{% endblock %}
