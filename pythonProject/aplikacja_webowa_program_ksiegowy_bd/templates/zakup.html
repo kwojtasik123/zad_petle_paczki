@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zakup produktów</title>
+</head>
+<body>
+    <h1>Zakup produktów</h1>
+
+    <!-- Wyświetlanie produktów w magazynie -->
+    {% if produkty|length > 0 %}
+        <h2>Produkty w magazynie:</h2>
+        <ul>
+            {% for produkt in produkty %}
+                <li>{{ produkt.nazwa }} - {{ produkt.ilosc }} szt. po {{ produkt.cena }} PLN</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Brak produktów w magazynie.</p>
+    {% endif %}
+
+    <!-- Formularz do dodania nowego produktu -->
+    <h2>Dodaj nowy produkt:</h2>
+    <form method="POST" action="/zakup">
+        <label for="nazwa">Nazwa produktu:</label>
+        <input type="text" name="nazwa" id="nazwa" required>
+
+        <label for="ilosc">Ilość:</label>
+        <input type="number" name="ilosc" id="ilosc" required>
+
+        <label for="cena">Cena (PLN):</label>
+        <input type="number" step="0.01" name="cena" id="cena" required>
+
+        <button type="submit">Dodaj produkt</button>
+    </form>
+<hr>
+    <a href="/">Powrót do menu głównego</a>
+</body>
+</html>
