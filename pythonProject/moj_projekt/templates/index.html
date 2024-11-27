@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Strona główna{% endblock %}
+
+{% block content %}
+    <h1>Lista pracowników</h1>
+    <ul>
+        {% for pracownik in pracownicy %}
+        <li>
+            <a href="{{ url_for('szczegoly_pracownika', pracownik_id=pracownik.id) }}">
+                {{ pracownik.imie }} {{ pracownik.nazwisko }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Dodaj nowego pracownika</h2>
+    <form action="{{ url_for('index') }}" method="post">
+        <label for="imie">Imię:</label>
+        <input type="text" id="imie" name="imie" required>
+
+        <label for="nazwisko">Nazwisko:</label>
+        <input type="text" id="nazwisko" name="nazwisko" required>
+
+        <label for="data_zatrudnienia">Data zatrudnienia:</label>
+        <input type="date" id="data_zatrudnienia" name="data_zatrudnienia" required>
+
+        <label for="pensja">Pensja:</label>
+        <input type="number" id="pensja" name="pensja" step="0.01" required>
+
+        <button type="submit">Dodaj</button>
+    </form>
+{% endblock %}
