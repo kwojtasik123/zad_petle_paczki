@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekomendacje</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-$END$
+    <div class="container">
+        <h1>Rekomendacje</h1>
+
+        <h2>Pracownicy bez punktów</h2>
+        <form method="GET" action="/rekomendacje">
+            <label for="miesiace">Wybierz okres (w miesiącach):</label>
+            <select name="miesiace" id="miesiace" onchange="this.form.submit()">
+                <option value="3" {% if miesiace == 3 %}selected{% endif %}>Ostatnie 3 miesiące</option>
+                <option value="6" {% if miesiace == 6 %}selected{% endif %}>Ostatnie 6 miesięcy</option>
+            </select>
+        </form>
+
+        {% if pracownicy_bez_punktow %}
+            <ul>
+                {% for pracownik in pracownicy_bez_punktow %}
+                    <li>{{ pracownik.imie }} {{ pracownik.nazwisko }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Wszyscy pracownicy otrzymali punkty w wybranym okresie.</p>
+        {% endif %}
+
+        <h2>Pracownicy z najmniejszą liczbą punktów</h2>
+        {% if najmniej_punktow %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>Suma punktów</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pracownik in najmniej_punktow %}
+                        <tr>
+                            <td>{{ pracownik.imie }}</td>
+                            <td>{{ pracownik.nazwisko }}</td>
+                            <td>{{ pracownik.suma_punktow if pracownik.suma_punktow else 0 }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Nie znaleziono pracowników.</p>
+        {% endif %}
+
+        <a href="/">Wróć do strony głównej</a>
+    </div>
 </body>
 </html>
+
