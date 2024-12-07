@@ -1,53 +1,59 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia operacji</title>
+</head>
+<body>
+    <h2>Historia operacji</h2>
 
-{% block content %}
-<h2>Historia operacji</h2>
-
-
-{% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-        <div class="toast-container">
-            {% for category, message in messages %}
-                <div class="toast {{ 'toast-success' if category == 'success' else 'toast-error' }}">
-                    {{ message }}
-                </div>
+    {% if historia %}
+        <ul>
+            {% for item in historia %}
+                <li>
+                    {{ item.operacja }}
+                    {% if item.zmiana %}
+                        - Kwota: {{ item.zmiana }}
+                    {% endif %}
+                </li>
             {% endfor %}
-        </div>
+        </ul>
+    {% else %}
+        <p>Brak danych do wyświetlenia.</p>
     {% endif %}
-{% endwith %}
 
+    {% if total %}
+        <p>Łączna liczba operacji: {{ total }}</p>
+    {% endif %}
 
-<form action="{{ url_for('historia') }}" method="GET">
-    <label for="start">Początek zakresu:</label>
-    <input type="number" id="start" name="start" value="{{ request.args.get('start', 0) }}" required min="0">
+    {% if total > 0 %}
+        <h3>Zmiana zakresu:</h3>
+        <form action="{{ url_for('historia') }}" method="get">
+            <label for="start">Start:</label>
+            <input
+                type="number"
+                name="start"
+                id="start"
+                value="{{ request.args.get('start', 0) }}"
+                required
+                min="0"
+                max="{{ total - 1 }}"
+            >
+            <label for="koniec">Koniec:</label>
+            <input
+                type="number"
+                name="koniec"
+                id="koniec"
+                value="{{ request.args.get('koniec', total) }}"
+                required
+                min="1"
+                max="{{ total }}"
+            >
+            <button type="submit">Zastosuj</button>
+        </form>
+    {% endif %}
+</body>
+</html>
 
-    <label for="koniec">Koniec zakresu:</label>
-    <input type="number" id="koniec" name="koniec" value="{{ request.args.get('koniec', 10) }}" required min="0">
-
-    <button type="submit" class="btn btn-primary">Pokaż zakres</button>
-</form>
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Data</th>
-            <th>Operacja</th>
-            <th>Szczegóły</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for record in history %}
-        <tr>
-            <td>{{ record.date }}</td>
-            <td>{{ record.operation }}</td>
-            <td>{{ record.details }}</td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="3">Brak zapisanych operacji.</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% endblock %}
 
