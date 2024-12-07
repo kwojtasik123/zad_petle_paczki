@@ -11,6 +11,28 @@
     <div class="card-body">
         <p><strong>Saldo:</strong> {{ saldo }} PLN</p>
         <p><strong>Liczba produktów w magazynie:</strong> {{ magazyn|length }}</p>
+
+        {% if magazyn %}
+        <h5>Szczegóły magazynu:</h5>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Produkt</th>
+                    <th>Ilość</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produkt, ilosc in magazyn.items() %}
+                <tr>
+                    <td>{{ produkt }}</td>
+                    <td>{{ ilosc }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>Magazyn jest pusty.</p>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
