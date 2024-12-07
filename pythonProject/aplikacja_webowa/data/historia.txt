@@ -1,4 +1,4 @@
-SALDO - dodano kwote 200
-ZAKUP : zakupiono olej, ilosc sztuk: 1 w cenie 20
-Zakup: maslo, 1 szt. po 20.0 PLN
-Sprzedaż: maslo, 1 szt. po 30.0 PLN
+ZAKUP: zakupiono Masło, ilość sztuk: 4 w cenie 20.0
+ZAKUP: zakupiono kawa, ilość sztuk: 2 w cenie 25.0
+SPRZEDAŻ: sprzedano Masło, ilość sztuk: 1 w cenie 23.0
+ZAKUP: zakupiono Herbata, ilość sztuk: 4 w cenie 23.0
